@@ -1,0 +1,88 @@
+<div class="container-lg mt-4">
+  <h4>Consulta de notificaciones de aclaraciones</h4>
+
+  <form class="border p-4 mb-4" [formGroup]="formulario">
+    <div class="mb-3">
+      <label class="form-label">Tipo de notificación*:</label>
+      <select class="form-select" formControlName="tipoNotificacion">
+        <option value=""></option>
+        <option value="E30">E30</option>
+        <option value="Reenrolamiento ">Reenrolamiento </option>
+        <option value="Desviación probable">Desviación probable</option>
+
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">CURP:</label>
+      <input class="form-control" formControlName="curp">
+    </div>
+
+    <div >
+      <label class="form-label">Folio de aclaración:</label>
+      <input class="form-control" formControlName="folio">
+    </div>
+    <div class="row mb-3">
+  <div class="col-md-6">
+    <label for="fechaInicio" class="form-input">Fecha inicio:</label>
+    <div class="input-group input-group-sm">
+      <input type="date" id="fechaInicio" class="form-control" formControlName="fechaInicio" />
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <label for="fechaFin" class="form-input">Fecha final:</label>
+    <div class="input-group input-group-sm">
+
+      <input type="date" id="fechaFin " class="form-control" formControlName="fechaFin" />
+    </div>
+  </div>
+</div>
+    <div class="d-flex gap-2 justify-content-end mt-3">
+  <button class="btn btn-danger" (click)="limpiar()">
+    <i class="bi bi-trash3"></i> Limpiar
+  </button>
+  <button class="btn btn-success" (click)="consultar()">
+    <i class="bi bi-check-lg"></i> Consultar
+  </button>
+</div>
+  </form>
+  <div >
+  <button class="btn btn-success" (click)="exportarExcel()">
+    <i class="bi bi-file-earmark-excel-fill "></i>
+  </button>
+</div>
+
+<div *ngIf="resultados.length > 0" class="table-responsive mt-4">
+  <table class="table table-sm table-bordered text-center">
+    <thead class="table-light text-center">
+      <tr>
+        <th>ID</th>
+        <th>Tipo</th>
+        <th>CURP</th>
+        <th>Folio</th>
+        <th>Fecha Inicio</th>
+        <th>Fecha Fin</th>
+        <th>NombreCompleto</th>
+        <th>RFC</th>
+        <th>numerotelefonico</th>
+        <th>direccion</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+     <tr *ngFor="let r of resultados">
+  <td>{{ r.idNotificacion }}</td>
+  <td>{{ r.tiponotificacion }}</td>
+  <td>{{ r.curp }}</td>
+  <td>{{ r.folio }}</td>
+  <td>{{ r.fechaInicio | date: 'yyyy-MM-dd' }}</td>
+  <td>{{ r.fechaFin | date: 'yyyy-MM-dd' }}</td>
+  <td>{{ r.nombreCompleto }}</td>
+  <td>{{ r.rfc }}</td>
+  <td>{{ r.numerotelefonico }}</td>
+  <td>{{ r.direccion }}</td>
+</tr>
+    </tbody>
+  </table>
+</div>
+</div>

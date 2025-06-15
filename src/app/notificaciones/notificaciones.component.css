@@ -1,0 +1,50 @@
+.container {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+select, textarea, input[type="date"] {
+  width: 100%;
+  padding: 6px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+textarea.error {
+  border: 1px solid red;
+  color: red;
+}
+
+.fecha {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.botones {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #747c8b;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #5a626d;
+}
