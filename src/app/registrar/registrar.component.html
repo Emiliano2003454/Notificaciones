@@ -1,0 +1,36 @@
+<div class="container d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="card shadow-lg p-4" style="width: 100%; max-width: 500px;">
+    <h3 class="text-center mb-4 text-success">Registro de Usuario</h3>
+
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="mb-3">
+        <label class="form-label"><i class="bi bi-person-fill me-2"></i>Usuario</label>
+        <input type="text" formControlName="username" class="form-control" [ngClass]="{'is-invalid': registerForm.get('username')?.touched && registerForm.get('username')?.invalid}">
+        <div class="invalid-feedback">El usuario es obligatorio.</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label"><i class="bi bi-lock-fill me-2"></i>Contraseña</label>
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{'is-invalid': registerForm.get('password')?.touched && registerForm.get('password')?.invalid}">
+        <div class="invalid-feedback">La contraseña es obligatoria.</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label"><i class="bi bi-geo-alt-fill me-2"></i>Dirección</label>
+        <input type="text" formControlName="direccion" class="form-control" [ngClass]="{'is-invalid': registerForm.get('direccion')?.touched && registerForm.get('direccion')?.invalid}">
+        <div class="invalid-feedback">La dirección es obligatoria.</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label"><i class="bi bi-telephone-fill me-2"></i>Número Telefónico</label>
+        <input type="text" formControlName="numeroTelefonico" class="form-control" [ngClass]="{'is-invalid': registerForm.get('numeroTelefonico')?.touched && registerForm.get('numeroTelefonico')?.invalid}">
+        <div class="invalid-feedback">Debe contener 10 dígitos.</div>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100" [disabled]="loading">
+        <span *ngIf="!loading"><i class="bi bi-person-plus-fill me-2"></i>Registrarse</span>
+        <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+      </button>
+    </form>
+  </div>
+</div>

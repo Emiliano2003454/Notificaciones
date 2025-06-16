@@ -1,0 +1,26 @@
+<div class="container d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="card shadow-lg p-4" style="width: 100%; max-width: 400px;">
+    <h3 class="text-center mb-4 text-primary">Iniciar Sesión</h3>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="mb-3">
+        <label class="form-label"><i class="bi bi-person-fill me-2"></i>Usuario</label>
+        <input type="text" formControlName="username" class="form-control"
+        [ngClass]="{ 'is-invalid': loginForm.get('username')?.touched && loginForm.get('username')?.invalid }">
+        <div class="invalid-feedback">El usuario es obligatorio.</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label"><i class="bi bi-lock-fill me-2"></i>Contraseña</label>
+        <input type="password" formControlName="password" class="form-control"
+        [ngClass]="{ 'is-invalid': loginForm.get('password')?.touched && loginForm.get('password')?.invalid }">
+        <div class="invalid-feedback">La contraseña es obligatoria.</div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100 rounded-pill" [disabled]="loading">
+  <span *ngIf="!loading"><i class="bi bi-box-arrow-in-right me-2"></i>Entrar</span>
+  <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status"></span>
+</button>
+    </form>
+  </div>
+</div>
